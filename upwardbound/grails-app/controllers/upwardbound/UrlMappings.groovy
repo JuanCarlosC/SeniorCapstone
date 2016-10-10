@@ -15,5 +15,8 @@ class UrlMappings {
         "404"(view: '/notFound')
 
         "/users"(resources:"user")
+        "/schools"(resources:"school")
+        "/students"(resources:"student")
+        "/classes"(resources:"class")
     }
 }
