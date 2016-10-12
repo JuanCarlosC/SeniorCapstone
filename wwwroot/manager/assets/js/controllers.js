@@ -121,6 +121,24 @@ appManager.controller('appStudentsManager', ['$scope', '$routeParams', '$rootSco
 		$scope.title = "Students Module"
 		$scope.featureView = 'overview';
 
+
+		$scope.addStudent = function(fName, lName, gradeLevel) {
+			var data = {
+				'firstName': fName,
+				'lastName': lName,
+				'gradeLevel': gradeLevel
+			};
+
+			$http({
+				method: 'POST',
+				data: data,
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+				url: '../users/add/' + data
+			}).then(function successCallback(response) {
+				console.log("user added updated")
+			});
+		}
+
 		$scope.students = [{
 			'firstName': 'John',
 			'lastName': 'Gravokiean',
