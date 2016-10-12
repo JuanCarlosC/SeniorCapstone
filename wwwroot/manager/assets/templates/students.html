@@ -1,0 +1,97 @@
+<div class="module-contents-header">
+	<div>{{title}}</div>
+	<div class="features">
+		<div ng-click="featureView = 'overview'" ng-class="{'selected' : featureView == 'overview'}" class="hvr-underline-from-center tab selected">
+			Overview
+		</div>
+		<!-- <div ng-click="featureView = 'style'" ng-class="{'selected' : featureView == 'style'}" ng-class="'select' : featureView = 'style'" class="hvr-underline-from-center tab">
+			Style
+		</div> -->
+	</div>
+</div>
+
+<!-- overview -->
+<div ng-show="featureView == 'overview'">
+	<div style="padding: 15px;">
+		<div style="background-color: white;">
+			
+			<!-- <div class="feature-card" style="padding: 40px; min-height: 100px;">
+				<div style="font-size: 20px;">
+					DATA SOURCE: http://calendar.creighton.edu/feed.xml
+				</div>
+				<div>
+					<a href="#">Change data source.</a>
+				</div>
+			</div> -->
+
+			<div class="feature-card" style="    padding: 40px;">
+				<div class="jc-row" style="    padding-bottom: 15px;border-bottom: 1px solid lightgray;margin-bottom: 18px;">
+					<div class="jc-col" style=" width: 20%;">
+						Profile Pic:
+					</div>
+					<div class="jc-col" style=" width: 20%;">
+						First Name: 
+					</div>
+					<div class="jc-col" style=" width: 20%;">
+						Last Name:
+					</div>
+					<div class="jc-col" style=" width: 10%;">
+						Grade Level:
+					</div>
+					<div class="jc-col" style=" width: 15%;">
+						Mentor:
+					</div>
+					<div class="jc-col" style="width: 15%">
+						Actions:
+					</div>
+				</div>
+				<div class="jc-row" style="    margin-bottom: 10px;border-bottom: 1px solid whitesmoke;" ng-repeat="student in students">
+					<div class="jc-col" style=" width: 20%;">
+						<img style="width: 30%;padding-bottom: 18px;" class="img-responsive" ng-src="{{student.profilePic}}">
+					</div>
+					<div class="jc-col" style=" width: 20%;">
+						{{student.firstName}}
+					</div>
+					<div class="jc-col" style=" width: 20%;">
+						{{student.lastName}}
+					</div>
+					<div class="jc-col" style=" width: 10%;">
+						{{student.gradeLevel}}
+					</div>
+					<div class="jc-col" style=" width: 15%;">
+						{{student.mentor}}
+					</div>
+					<div class="jc-col" style="width: 15%">
+						edit/delete
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+
+<!-- STYLE -->
+<div ng-show="featureView == 'style'">
+	<div style="padding: 15px;">
+		<div style="background-color: white; height: 300px">
+			STYLE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>	
+	</div>
+</div>

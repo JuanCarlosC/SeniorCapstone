@@ -1,0 +1,59 @@
+<div class="module-contents-header">
+	<div>{{title}}</div>
+	<div class="features">
+		<div ng-click="featureView = 'data'" ng-class="{'selected' : featureView == 'data'}" class="hvr-underline-from-center tab selected">
+			Data
+		</div>
+		<div ng-click="featureView = 'style'" ng-class="{'selected' : featureView == 'style'}" ng-class="'select' : featureView = 'style'" class="hvr-underline-from-center tab">
+			Style
+		</div>
+	</div>
+</div>
+
+<!-- DATA -->
+<div ng-show="featureView == 'data'">
+	<div style="padding: 15px;">
+		<div style="background-color: white; height: 300px">
+			DATA
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>	
+	</div>
+</div>
+
+<!-- STYLE -->
+<div ng-show="featureView == 'style'">
+	<div style="padding: 15px;">
+		<div style="background-color: white; height: 300px">
+			STYLE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>	
+	</div>
+</div>

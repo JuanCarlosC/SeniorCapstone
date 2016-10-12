@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Upward Bound App.</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<!-- IMPORT JS PACKAGES -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<style type="text/css">
+		html {
+			font-family: 'Roboto', sans-serif;
+		}
+		.identification-wrapper {
+		    padding: 40px 20px 0 20px;
+		    position: absolute;
+		    height: 83%;
+		    top: 6%;
+		}
+		.exit-identification {
+		    position: absolute;
+		    right: 27px;
+		    top: 5px;
+		    color: #78a8e6;
+		}
+		.identification-wrapper .creighton-logo {
+			text-align: center;
+			padding: 10px 80px;
+		}
+		.student-fac-button {
+		    position: relative;
+		    background: -webkit-linear-gradient(left top, #6cb2ff, #82abe4);
+		    background: -o-linear-gradient(bottom right, #6cb2ff, #82abe4);
+		    background: -moz-linear-gradient(bottom right, #6cb2ff, #82abe4);
+		    background: linear-gradient(to bottom right, #6cb2ff, #82abe4);
+		    border-radius: 3px;
+		    border: none;
+		    font-size: 15px;
+		    color: #FFFFFF;
+		    padding: 15px;
+		    text-align: center;
+		    -webkit-transition-duration: 0.4s;
+		    transition-duration: 0.4s;
+		    text-decoration: none;
+		    overflow: hidden;
+		    margin-bottom: 20px;
+		    cursor: pointer;
+		}
+		input[type="text"], input[type="password"] {
+		  border: none;
+		  display: block;
+		  margin: 0;
+		  width: 100%;
+		  font-weight: 100;
+		  margin-left: -12px;
+		  padding: 10px 23px;
+		  font-family: sans-serif;
+		  font-size: 14px;
+		  appearance: none;
+		  box-shadow: none;
+		  border-radius: none;
+		}
+		input[type="text"]:focus, input[type="password"] {
+		  outline: none;
+		}
+		.internal-options-wrapper {
+		    width: 270px;
+			height: 150px;
+			position: absolute;
+			left: 50%;
+			top: 35%;
+			margin: -135px 0 0 -135px;
+		}
+		.student-facult-to-login a {
+			text-decoration: none;
+		}
+	</style>
+	<script type="text/javascript">
+		$(function() {
+			$("#username-input-text-box").focus();
+		})
+	</script>
+</head>
+<body>
+	<div class="authentication-wrapper">
+		<div class="internal-options-wrapper">
+			<div class="creighton-logo" style="padding: 20px;">
+                <img src="manager/assets/imgs/ublogo.jpg" style="width: 100%;">
+            </div>
+	        <div class="username-pw-form">
+	            <div class="login-form" style="overflow: hidden;margin-bottom: 12px;border-radius: 3px;">
+	                <div class="username-input">
+	                    <input id="username-input-text-box" type="text" name="netid" placeholder="Username" style="border-bottom: 1px solid whitesmoke;">
+	                </div>
+	                <div class="password-input">
+	                    <input id="username-input-password-box" type="password" value="test" name="pw" placeholder="Password">
+	                </div>
+	            </div>
+	        </div>
+	        <div class="student-facult-to-login">
+	            <a href="manager/#/students">
+	            	<div class="student-fac-button">Sign In</div>
+	            </a>
+	        </div>    
+	    </div>
+	</div>
+</body>
+</html>
