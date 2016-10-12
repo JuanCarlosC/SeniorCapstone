@@ -1,0 +1,145 @@
+<div class="module-contents-header">
+	<div>{{title}}</div>
+	<div class="features">
+		<div ng-click="featureView = 'overview'" ng-class="{'selected' : featureView == 'overview'}" class="hvr-underline-from-center tab selected">
+			Overview
+		</div>
+	</div>
+</div>
+
+<!-- overview -->
+<div ng-show="featureView == 'overview'">
+	<div style="padding: 15px;">
+		<div>
+			<div class="jc-row">
+				<div class="feature-card jc-col" style="width: 40%; padding: 20px 30px; min-height: 200px;">
+					<!-- <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker> -->
+					<h1>Classes for Fall 2016</h1>
+					<div class="jc-row" style="padding-bottom: 15px;border-bottom: 1px solid lightgray;margin-bottom: 18px;">
+						<div class="jc-col" style=" width: 20%;">
+							Title:
+						</div>
+						<div class="jc-col" style=" width: 20%;">
+							Subject: 
+						</div>
+						<div class="jc-col" style=" width: 20%;">
+							Instructor:
+						</div>
+						<div class="jc-col" style=" width: 10%;">
+							Start Date:
+						</div>
+						<div class="jc-col" style=" width: 15%;">
+							End Date:
+						</div>
+						<div class="jc-col" style="width: 15%">
+							Action:
+						</div>
+					</div>
+					<div class="jc-row" style="margin-bottom: 10px;border-bottom: 1px solid whitesmoke;" ng-repeat="class in classes">
+						<div class="jc-col" style=" width: 20%;">
+							{{class.name}}
+						</div>
+						<div class="jc-col" style=" width: 20%;">
+							{{class.subject}}
+						</div>
+						<div class="jc-col" style=" width: 20%;">
+							{{class.instructor}}
+						</div>
+						<div class="jc-col" style=" width: 10%;">
+							{{class.startDate}}
+						</div>
+						<div class="jc-col" style=" width: 15%;">
+							{{class.endDate}}
+						</div>
+						<div class="jc-col" style="width: 15%">
+							Edit
+						</div>
+					</div>
+				</div>
+				<div class="jc-col" style="width: 60%;">
+					<div class="feature-card" style="    padding: 40px;">
+						<h1>Current Students</h1>
+						<div class="jc-row" style="    padding-bottom: 15px;border-bottom: 1px solid lightgray;margin-bottom: 18px;">
+							<div class="jc-col" style=" width: 20%;">
+								Profile Pic:
+							</div>
+							<div class="jc-col" style=" width: 20%;">
+								First Name: 
+							</div>
+							<div class="jc-col" style=" width: 20%;">
+								Last Name:
+							</div>
+							<div class="jc-col" style=" width: 30%;">
+								More:
+							</div>
+						</div>
+						<div class="jc-row" style="    margin-bottom: 10px;border-bottom: 1px solid whitesmoke;" ng-repeat="student in students">
+							<div class="jc-col" style=" width: 20%;">
+								<img style="width: 30%;padding-bottom: 18px;" class="img-responsive" ng-src="{{student.profilePic}}">
+							</div>
+							<div class="jc-col" style=" width: 20%;">
+								{{student.firstName}}
+							</div>
+							<div class="jc-col" style=" width: 20%;">
+								{{student.lastName}}
+							</div>
+							<div class="jc-col" style=" width: 30%;">
+								<div  style="    margin: 15px;" class="student-fac-button">
+									More >
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="feature-card jc-col" style="width: 40%; padding: 20px 30px; min-height: 200px;">
+					<h1>Add New Manager:</h1>
+
+			        <div class="username-pw-form">
+			            <div class="login-form" style="overflow: hidden;margin-bottom: 12px;border-radius: 3px;">
+			                <div class="username-input">
+			                    <input id="username-input-text-box" type="text" name="netid" placeholder="Username" style="border-bottom: 1px solid whitesmoke;">
+			                </div>
+			                <div class="password-input">
+			                    <input id="username-input-password-box" type="password" name="pw" placeholder="Password">
+			                </div>
+			                <div class="password-input">
+			                    <input id="username-input-password-box" type="password" name="pw" placeholder="Confirm Password">
+			                </div>
+			            </div>
+			        </div>
+			        <div class="student-facult-to-login">
+			            <a href="manager/#/">
+			            	<div class="student-fac-button">Create New Manager</div>
+			            </a>
+			        </div>    
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+
+<!-- STYLE -->
+<div ng-show="featureView == 'style'">
+	<div style="padding: 15px;">
+		<div style="background-color: white; height: 300px">
+			STYLE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>	
+	</div>
+</div>

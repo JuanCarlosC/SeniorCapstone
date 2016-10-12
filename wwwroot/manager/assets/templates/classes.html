@@ -1,36 +1,109 @@
 <div class="module-contents-header">
 	<div>{{title}}</div>
 	<div class="features">
-		<div ng-click="featureView = 'data'" ng-class="{'selected' : featureView == 'data'}" class="hvr-underline-from-center tab selected">
-			Data
-		</div>
-		<div ng-click="featureView = 'style'" ng-class="{'selected' : featureView == 'style'}" ng-class="'select' : featureView = 'style'" class="hvr-underline-from-center tab">
-			Style
+		<div ng-click="featureView = 'overview'" ng-class="{'selected' : featureView == 'overview'}" class="hvr-underline-from-center tab selected">
+			Overview
 		</div>
 	</div>
 </div>
 
-<!-- DATA -->
-<div ng-show="featureView == 'data'">
+<!-- overview -->
+<div ng-show="featureView == 'overview'">
 	<div style="padding: 15px;">
-		<div style="background-color: white; height: 300px">
-			DATA
+		<div>
+			<div class="jc-row">
+				<div class="feature-card jc-col" style="width: 20%; padding: 20px 30px; min-height: 200px;">
+					<!-- <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker> -->
+					<div>
+						<h1>Semester:</h1>
+					</div>
+					<select class="form-control">
+						<option>Fall 2016</option>
+						<option>Summer 2016</option>
+						<option>Spring 2016</option>
+						<option>Fall 2015</option>
+						<option>Summer 2015</option>
+					</select>
+					<div style="    margin: 15px;"  class="student-fac-button">
+						Go >
+					</div>
+				</div>
+				<div class="jc-col" style="width: 80%;">
+					<div class="feature-card" style="padding: 40px; min-height: 100px;">
+						<div class="jc-row">
+							<div class="jc-col" style="width: 20%; font-size: 20px;">
+								Subject:
+							</div>
+							<div class="jc-col" style="width: 80%;">
+								<select class="form-control">
+									<option>Math</option>
+									<option>Science</option>
+									<option>Gym</option>
+									<option>Geography</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+<!-- 
+
+static belongsTo = Student
+    static hasMany = [students:Student]
+    String name
+    String subject
+    String instructor
+    Date startDate
+    Date endDate
+
+ -->
+
+					<div class="feature-card" style="padding: 40px;">
+						<div class="jc-row" style="padding-bottom: 15px;border-bottom: 1px solid lightgray;margin-bottom: 18px;">
+							<div class="jc-col" style=" width: 20%;">
+								Title:
+							</div>
+							<div class="jc-col" style=" width: 20%;">
+								Subject: 
+							</div>
+							<div class="jc-col" style=" width: 20%;">
+								Instructor:
+							</div>
+							<div class="jc-col" style=" width: 10%;">
+								Start Date:
+							</div>
+							<div class="jc-col" style=" width: 15%;">
+								End Date:
+							</div>
+							<div class="jc-col" style="width: 15%">
+								Action:
+							</div>
+						</div>
+						<div class="jc-row" style="margin-bottom: 10px;border-bottom: 1px solid whitesmoke;" ng-repeat="class in classes">
+							<div class="jc-col" style=" width: 20%;">
+								{{class.name}}
+							</div>
+							<div class="jc-col" style=" width: 20%;">
+								{{class.subject}}
+							</div>
+							<div class="jc-col" style=" width: 20%;">
+								{{class.instructor}}
+							</div>
+							<div class="jc-col" style=" width: 10%;">
+								{{class.startDate}}
+							</div>
+							<div class="jc-col" style=" width: 15%;">
+								{{class.endDate}}
+							</div>
+							<div class="jc-col" style="width: 15%">
+								Edit
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
 		</div>
-		<div style="background-color: white; height: 300px">
-			TESTING SIZE
-		</div>
-		<div style="background-color: white; height: 300px">
-			TESTING SIZE
-		</div>
-		<div style="background-color: white; height: 300px">
-			TESTING SIZE
-		</div>
-		<div style="background-color: white; height: 300px">
-			TESTING SIZE
-		</div>
-		<div style="background-color: white; height: 300px">
-			TESTING SIZE
-		</div>	
 	</div>
 </div>
 
