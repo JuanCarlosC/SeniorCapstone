@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Upward Bound Manager</title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+	<!-- Favicon -->
+	<link rel="apple-touch-icon" sizes="57x57" href="assets/imgs/favicon.ico/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="assets/imgs/favicon.ico/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="assets/imgs/favicon.ico/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/imgs/favicon.ico/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="assets/imgs/favicon.ico/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="assets/imgs/favicon.ico/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="assets/imgs/favicon.ico/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="assets/imgs/favicon.ico/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/imgs/favicon.ico/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="assets/imgs/favicon.ico/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/imgs/favicon.ico/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="assets/imgs/favicon.ico/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/imgs/favicon.ico/favicon-16x16.png">
+	<link rel="manifest" href="assets/imgs/favicon.ico/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+	<!-- IMPORT JS PACKAGES -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-animate.min.js"></script>
+</head>
+<body ng-app="app">
+	<div class="super-wrapper">
+		<section class="app-wrapper">
+
+			<!-- //////////////   APP TOP NAV BAR   ////////////// -->
+			<div class="top-app-bar">
+				<div class="app-bar">
+					<div style="padding: 8px 30px;">
+						<!-- <img class="img-responsive" src="assets/imgs/fugaziLogo.png"> -->
+					</div>
+				</div>
+			</div>
+	
+
+			<!-- //////////////   SIDE NAV BAR - MODULES    //////////////-->
+			<div class="side-nav-bar">
+				<div class="inner-side-nav-container">
+					<!-- APP NAME -->
+					
+					<div class="app-name">
+						<a style="text-decoration:none;" href="#/">
+							<div style="padding: 8px">
+								<img class="img-responsive" src="assets/imgs/ublogo.jpg">
+							</div>
+						</a>
+					</div>
+
+					<a href="#/students">
+						<div class="app-section" ng-class="{'active' : tab == 'students'}">
+							<span class="section-icon">
+								<i class="fa fa-users" aria-hidden="true"></i>
+							</span>
+							<span class="title">Students</span>
+						</div>
+					</a>
+
+					<a href="#/clocktime">
+						<div class="app-section" ng-class="{'active' : tab == 'clocktime'}">
+							<span class="section-icon">
+								<i class="fa fa-clock-o" aria-hidden="true"></i>
+							</span>
+							<span class="title">Clock Time</span>
+						</div>
+					</a>
+
+					<a href="#/meals">
+						<div class="app-section" ng-class="{'active' : tab == 'meals'}">
+							<span class="section-icon">
+								<i class="fa fa-cutlery" aria-hidden="true"></i>
+							</span>
+							<span class="title">Meals</span>
+						</div>
+					</a>
+
+					<a href="#/classes">
+						<div class="app-section" ng-class="{'active' : tab == 'classes'}">
+							<span class="section-icon">
+								<i class="fa fa-book" aria-hidden="true"></i>
+							</span>
+							<span class="title">Classes</span>
+						</div>
+					</a>
+					<hr>
+					<a href="../">
+						<div class="app-section">
+							<span class="title">SignOut</span>
+						</div>
+					</a>
+				</div>
+				<div class="inner-side-nav-container-footer">
+					<div style="width: 100%; padding: 15px; text-align:center;">
+						<span class="title">
+							<!-- Username shows here. -->
+						 </span> <i style="float: right; font-size:16px;" class="fa fa-caret-square-o-left open-close-side-bar" aria-hidden="true"></i>
+						<i style="font-size:16px; display: none;" class="open-close-side-bar fa fa-caret-square-o-right" aria-hidden="true"></i>
+					</div>
+				</div>
+			</div>
+
+			<!-- //////////////   MODULE CONTENT   //////////////-->
+			<div class="module-host">
+				<div class="module-contents">
+					<div ng-view>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){	
+			$("div.inner-side-nav-container-footer > div > i").click(function() {
+				$("span.title").toggle('slow');
+				$("hr.section-hr-line").toggle('slow');
+				$("div.section-label").toggle('slow');
+				$("span.section-label").toggle('slow');
+				$("i.open-close-side-bar").toggle('slow');
+				var toggleWidth = $(".side-nav-bar").width() == 256 ? "100px" : "256px";
+		        $('.side-nav-bar').css('width', toggleWidth);
+		        $('.module-contents').css('left', toggleWidth);
+			});
+		});
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/js/app.js"></script>
+	<script type="text/javascript" src="assets/js/controllers.js"></script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>UpwardBound Manager</title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-switch.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+	<!-- Favicon -->
+	<link rel="apple-touch-icon" sizes="57x57" href="assets/imgs/favicon.ico/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="assets/imgs/favicon.ico/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="assets/imgs/favicon.ico/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/imgs/favicon.ico/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="assets/imgs/favicon.ico/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="assets/imgs/favicon.ico/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="assets/imgs/favicon.ico/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="assets/imgs/favicon.ico/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/imgs/favicon.ico/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="assets/imgs/favicon.ico/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/imgs/favicon.ico/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="assets/imgs/favicon.ico/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/imgs/favicon.ico/favicon-16x16.png">
+	<link rel="manifest" href="assets/imgs/favicon.ico/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+	<!-- IMPORT JS PACKAGES -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-animate.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body ng-app="app">
+	<div class="super-wrapper">
+		<section class="app-wrapper">
+
+			<!-- //////////////   APP TOP NAV BAR   ////////////// -->
+			<div class="top-app-bar">
+				<div class="app-bar">
+					<div style="padding: 8px 30px;border-right: 1px solid #C6CFD6;">
+						<img class="img-responsive" src="assets/imgs/fugaziLogo.png">
+					</div>
+				</div>
+			</div>
+	
+
+			<!-- //////////////   SIDE NAV BAR - MODULES    //////////////-->
+			<div class="side-nav-bar">
+				<div class="inner-side-nav-container">
+					<!-- APP NAME -->
+					<div class="app-name">
+						<span class="section-label">
+							<a style="text-decoration:none;"href="#/">Fugazi.life &nbsp;</a>	
+						</span>
+						<i class="fa fa-cog" aria-hidden="true"></i>
+					</div>
+
+
+					<!-- MODULES -->
+					<div class="section-label" style="padding: 20px 15px;color: #5D6468;">
+						Products
+					</div>
+					<hr class="section-hr-line" style="display:none;">
+
+
+					<a href="#/orders">
+						<div class="app-section">
+							<span class="section-icon">
+								<i class="fa fa-cart-plus" aria-hidden="true"></i>
+							</span>
+							<span class="title">Orders</span>
+						</div>
+					</a>
+
+					<a href="#/customers">
+						<div class="app-section">
+							<span class="section-icon">
+								<i class="fa fa-users" aria-hidden="true"></i>
+							</span>
+							<span class="title">Customers</span>
+						</div>
+					</a>
+
+					<a href="#/products" ng-class="{'active': tab == 'product'}">
+						<div class="app-section">
+							<span class="section-icon">
+								<i class="fa fa-tags" aria-hidden="true"></i>
+							</span>
+							<span class="title">Products</span>
+						</div>
+					</a>
+
+					<a href="#/collections">
+						<div class="app-section">
+							<span class="section-icon">
+								<i class="fa fa-plus-square" aria-hidden="true"></i>
+							</span>
+							<span class="title">Collections</span>
+						</div>
+					</a>
+
+					<a href="#/discounts">
+						<div class="app-section">
+							<span class="section-icon">
+								<i class="fa fa-money" aria-hidden="true"></i>
+							</span>
+							<span class="title">Discounts</span>
+						</div>
+					</a>
+
+					<a href="#/analytics">
+						<div class="app-section">
+							<span class="section-icon">
+								<i class="fa fa-bar-chart" aria-hidden="true"></i>
+							</span>
+							<span class="title">Analytics</span>
+						</div>
+					</a>
+
+					<!-- 
+					Exploration and Search, Product Details and Reviews, Checkout and Payments
+					**************************************************************************
+					Search
+					Promotions/Deals/Coupons
+					Discounts
+					Shipping
+					Orders
+					Email
+
+
+
+					 -->
+				<!--<a href="#/customers/styles">
+						<div class="app-section">
+							<span class="section-icon">
+								<i class="fa fa-paint-brush" aria-hidden="true"></i>
+							</span>
+							<span class="title">Styles</span>
+						</div>
+					</a> -->
+				</div>
+				<div class="inner-side-nav-container-footer">
+					<div style="width: 100%; padding: 15px; text-align:center;">
+						<span class="title"> juancchavez </span> <i style="float: right; font-size:16px;" class="fa fa-caret-square-o-left open-close-side-bar" aria-hidden="true"></i>
+						<i style="font-size:16px; display: none;" class="open-close-side-bar fa fa-caret-square-o-right" aria-hidden="true"></i>
+					</div>
+				</div>
+			</div>
+
+			<!-- //////////////   MODULE CONTENT   //////////////-->
+			<div class="module-host">
+				<div class="module-contents">
+					<div ng-view>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){	
+			$("div.inner-side-nav-container-footer > div > i").click(function() {
+				$("span.title").toggle('slow');
+				$("hr.section-hr-line").toggle('slow');
+				$("div.section-label").toggle('slow');
+				$("span.section-label").toggle('slow');
+				$("i.open-close-side-bar").toggle('slow');
+				var toggleWidth = $(".side-nav-bar").width() == 256 ? "100px" : "256px";
+		        $('.side-nav-bar').css('width', toggleWidth);
+		        $('.module-contents').css('left', toggleWidth);
+			});
+		});
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/js/bootstrap-switch.min.js"></script>
+	<script type="text/javascript" src="assets/js/app.js"></script>
+	<script type="text/javascript" src="assets/js/controllers.js"></script>
+</body>
+</html>

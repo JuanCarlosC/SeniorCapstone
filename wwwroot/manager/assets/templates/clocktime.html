@@ -1,0 +1,115 @@
+<div class="module-contents-header">
+	<div>{{title}}</div>
+	<div class="features">
+		<div ng-click="featureView = 'overview'" ng-class="{'selected' : featureView == 'overview'}" class="hvr-underline-from-center tab selected">
+			Overview
+		</div>
+	</div>
+</div>
+
+<!-- overview -->
+<div ng-show="featureView == 'overview'">
+	<div style="padding: 15px;">
+		<div>
+			<div class="jc-row">
+				<div class="feature-card jc-col" style="width: 20%; padding: 20px 30px; min-height: 200px;">
+					<!-- <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker> -->
+					<div>
+						<h1>Date:</h1>
+					</div>
+					<input type="date" name="activitydate">
+				</div>
+				<div class="jc-col" style="width: 80%;">
+					<div class="feature-card" style="padding: 40px; min-height: 100px;">
+						<div class="jc-row">
+							<div class="jc-col" style="width: 20%; font-size: 20px;">
+								Activity Type:
+							</div>
+							<div class="jc-col" style="width: 80%;">
+								<select class="form-control">
+									<option>Tutoring</option>
+									<option>Volunteer</option>
+									<option>Saturday Academy</option>
+									<option>College Visit</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="feature-card" style="    padding: 40px;">
+						<div class="jc-row" style="    padding-bottom: 15px;border-bottom: 1px solid lightgray;margin-bottom: 18px;">
+							<div class="jc-col" style=" width: 20%;">
+								Profile Pic:
+							</div>
+							<div class="jc-col" style=" width: 20%;">
+								First Name: 
+							</div>
+							<div class="jc-col" style=" width: 20%;">
+								Last Name:
+							</div>
+							<div class="jc-col" style=" width: 10%;">
+								Clock In:
+							</div>
+							<div class="jc-col" style=" width: 15%;">
+								Clock Out:
+							</div>
+							<div class="jc-col" style="width: 15%">
+								Edit
+							</div>
+						</div>
+						<div class="jc-row" style="    margin-bottom: 10px;border-bottom: 1px solid whitesmoke;" ng-repeat="student in students">
+							<div class="jc-col" style=" width: 20%;">
+								<img style="width: 30%;padding-bottom: 18px;" class="img-responsive" ng-src="{{student.profilePic}}">
+							</div>
+							<div class="jc-col" style=" width: 20%;">
+								{{student.firstName}}
+							</div>
+							<div class="jc-col" style=" width: 20%;">
+								{{student.lastName}}
+							</div>
+							<div class="jc-col" style=" width: 10%;">
+								<div  style="    margin: 15px;" class="student-fac-button">
+									In
+								</div>
+							</div>
+							<div class="jc-col" style=" width: 15%;">
+								<div style="    margin: 15px;"  class="student-fac-button">
+									Out
+								</div>
+							</div>
+							<div class="jc-col" style="width: 15%">
+								Edit
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+
+<!-- STYLE -->
+<div ng-show="featureView == 'style'">
+	<div style="padding: 15px;">
+		<div style="background-color: white; height: 300px">
+			STYLE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>
+		<div style="background-color: white; height: 300px">
+			TESTING SIZE
+		</div>	
+	</div>
+</div>
