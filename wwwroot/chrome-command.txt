@@ -1,0 +1,8 @@
+chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
+
+
+Limitations of Grails for the many to many relationships. Actively manage the relationships vs having hibertate manage the relationship. Pro adding data to the payload requires(grades or similar) no data migrations. Cons it that it is another table to actively manage.
+
+tight cpuling of the UI to the api. Having logic in the UI vs the logic on the api. 
+
+asnychronous javascript with multiple calls can cause problems. This should be handled on the api.

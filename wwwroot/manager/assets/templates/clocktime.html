@@ -26,59 +26,60 @@
 								Activity Type:
 							</div>
 							<div class="jc-col" style="width: 80%;">
-								<select class="form-control">
-									<option>Tutoring</option>
-									<option>Volunteer</option>
-									<option>Saturday Academy</option>
-									<option>College Visit</option>
-								</select>
+					    		<select id="tutorDropDown" class="form-control" ng-options="tutor.name for tutor in tutors" ng-model="selectedTutor"></select>
+							</div>
+							<button class="btn btn-default" ng-click="searchTutorDates()">Search Dates</button>
+						</div>
+						<div ng-if="displayedTutorDates.length > 0" class="jc-row">
+							<br>
+							<div class="form-group">
+								<div class="form-control">
+									Create new Tutor Date 
+									<input type="date" placeholder="date" ng-model="tutorDateToBeAdded.date">
+									<button class="btn btn-xs btn-success" ng-click="addTutorDate()">Add Date</button>
+								</div>
+							</div>
+							Choose Date:
+							<div ng-repeat="tutorDate in displayedTutorDates">
+								Date: <a ng-click="searchStudents(tutorDate)">{{tutorDate.date | date}}</a> 
 							</div>
 						</div>
 					</div>
 
 					<div class="feature-card" style="    padding: 40px;">
+						<h3 ng-if="selectedTutorDate.date">Students for <b>{{selectedTutorDate.date | date}}</b></h3><hr>
 						<div class="jc-row" style="    padding-bottom: 15px;border-bottom: 1px solid lightgray;margin-bottom: 18px;">
-							<div class="jc-col" style=" width: 20%;">
-								Profile Pic:
-							</div>
 							<div class="jc-col" style=" width: 20%;">
 								First Name: 
 							</div>
 							<div class="jc-col" style=" width: 20%;">
 								Last Name:
 							</div>
-							<div class="jc-col" style=" width: 10%;">
-								Clock In:
+							<div class="jc-col" style=" width: 15%;">
+								Attended:
 							</div>
 							<div class="jc-col" style=" width: 15%;">
-								Clock Out:
-							</div>
-							<div class="jc-col" style="width: 15%">
-								Edit
+								Absent:
 							</div>
 						</div>
-						<div class="jc-row" style="    margin-bottom: 10px;border-bottom: 1px solid whitesmoke;" ng-repeat="student in students">
-							<div class="jc-col" style=" width: 20%;">
-								<img style="width: 30%;padding-bottom: 18px;" class="img-responsive" ng-src="{{student.profilePic}}">
-							</div>
+						<div class="jc-row" style="    margin-bottom: 10px;border-bottom: 1px solid whitesmoke;" ng-repeat="student in displayedStudents">
 							<div class="jc-col" style=" width: 20%;">
 								{{student.firstName}}
 							</div>
 							<div class="jc-col" style=" width: 20%;">
 								{{student.lastName}}
 							</div>
-							<div class="jc-col" style=" width: 10%;">
-								<div  style="    margin: 15px;" class="student-fac-button">
-									In
-								</div>
+							<div ng-if="student.displayTutorSessions" class="jc-col" style="width: 30%">
+								{{student.displayTutorSessions.date | date}}, attendence:  {{student.displayTutorSessions.attended}}
 							</div>
-							<div class="jc-col" style=" width: 15%;">
-								<div style="    margin: 15px;"  class="student-fac-button">
+							<div ng-if="!student.displayTutorSessions" class="jc-col" style=" width: 15%;">
+								<button class="btn btn-sm btn-success">Attended</button>
+							</div>
+							<div ng-if="!student.displayTutorSessions" class="jc-col" style=" width: 15%;">
+								<!-- <div style="    margin: 15px;"  class="student-fac-button">
 									Out
-								</div>
-							</div>
-							<div class="jc-col" style="width: 15%">
-								Edit
+								</div> -->
+								<button class="btn btn-sm btn-danger">Absent</button>
 							</div>
 						</div>
 					</div>

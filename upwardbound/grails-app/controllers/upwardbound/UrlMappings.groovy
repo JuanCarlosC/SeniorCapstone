@@ -18,5 +18,9 @@ class UrlMappings {
         "/schools"(resources:"school")
         "/students"(resources:"student")
         "/classes"(resources:"class")
+        "/tutors"(resources:"tutor")
+        "/tutorsessions"(resources:"tutorSession")
+        "/tutorDates"(resources:"tutorDate")
+
     }
 }

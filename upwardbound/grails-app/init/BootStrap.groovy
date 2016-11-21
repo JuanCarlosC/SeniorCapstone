@@ -41,6 +41,7 @@ class BootStrap {
         )
 
         def class1 = new Class(
+                semester: "Sping 2017",
                 name: "Biology",
                 subject: "Science",
                 instructor: "Test Teacher",
@@ -49,23 +50,77 @@ class BootStrap {
         )
 
         def class2 = new Class(
+                semester: "Sping 2017",
                 name: "Computer Science",
                 subject: "Science",
                 instructor: "Test Teacher2",
                 startDate: new Date(),
                 endDate: new Date()
         )
-        student1.addToClasses(class1)
-        student1.addToClasses(class2)
-        student2.addToClasses(class1)
-        student2.addToClasses(class2)
-        student3.addToClasses(class1)
-        student3.addToClasses(class2)
 
+
+        class1.addToStudents(student1)
+        class1.addToStudents(student2)
+        class1.addToStudents(student3)
+
+        def tutor1 = new Tutor(
+                name: "Computer Science",
+                subject: "Science",
+                tutorName: "Tutor Name"
+        )
+        def tutor2 = new Tutor(
+                name: "Writing",
+                subject: "English",
+                tutorName: "Tutor Name"
+        )
+        student1.addToTutors(tutor1)
+        student1.addToTutors(tutor2)
+        student2.addToTutors(tutor1)
+        student3.addToTutors(tutor2)
+
+        def tutorSession1 = new TutorSession(
+                date: new Date(),
+                attended: true
+        )
+        def tutorSession2 = new TutorSession(
+                date: new Date(),
+                attended: false
+        )
+        def tutorSession3 = new TutorSession(
+                date: new Date(),
+                attended: false
+        )
+        def tutorSession4 = new TutorSession(
+                date: new Date(),
+                attended: true
+        )
+        def tutorDate = new TutorDate(
+                date: new Date()
+        )
+        def tutorDate2 = new TutorDate(
+                date: new Date()
+        )
+        tutor1.addToTutorDates(tutorDate)
+        tutor2.addToTutorDates(tutorDate2)
+
+        student1.addToTutorSessions(tutorSession1)
+        tutorDate.addToTutorSessions(tutorSession1)
+
+        student1.addToTutorSessions(tutorSession2)
+        tutorDate2.addToTutorSessions(tutorSession2)
+
+        student2.addToTutorSessions(tutorSession3)
+        tutorDate.addToTutorSessions(tutorSession3)
+
+        student3.addToTutorSessions(tutorSession4)
+        tutorDate2.addToTutorSessions(tutorSession4)
 
         school.addToStudents(student1)
         school.addToStudents(student2)
         school.addToStudents(student3)
+
+        school.addToClasses(class1)
+        school.addToClasses(class2)
 
         school.save(flush:true,failOnError:true)
     }

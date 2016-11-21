@@ -9,4 +9,9 @@ class User {
     String userName
     String password
     String email
+    static mapping = {
+        school fetch: 'join'
+        school lazy: false
+
+    }
 }
