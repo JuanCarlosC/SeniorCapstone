@@ -4,9 +4,9 @@
 		<div ng-click="featureView = 'overview'" ng-class="{'selected' : featureView == 'overview'}" class="hvr-underline-from-center tab selected">
 			Overview
 		</div>
-		<!-- <div ng-click="featureView = 'style'" ng-class="{'selected' : featureView == 'style'}" ng-class="'select' : featureView = 'style'" class="hvr-underline-from-center tab">
-			Style
-		</div> -->
+		<div ng-click="featureView = 'addStudent'" ng-class="{'selected' : featureView == 'addStudent'}" class="hvr-underline-from-center tab selected">
+			Add Student
+		</div>
 	</div>
 </div>
 
@@ -14,18 +14,8 @@
 <div ng-show="featureView == 'overview'">
 	<div style="padding: 15px;">
 		<div style="background-color: white;">
-			
-			<!-- <div class="feature-card" style="padding: 40px; min-height: 100px;">
-				<div style="font-size: 20px;">
-					DATA SOURCE: http://calendar.creighton.edu/feed.xml
-				</div>
-				<div>
-					<a href="#">Change data source.</a>
-				</div>
-			</div> -->
-
-			<div class="feature-card" style="    padding: 40px;">
-				<div class="jc-row" style="    padding-bottom: 15px;border-bottom: 1px solid lightgray;margin-bottom: 18px;">
+			<div class="feature-card" style="padding: 40px;">
+				<div class="jc-row" style="padding-bottom: 15px;border-bottom: 1px solid lightgray;margin-bottom: 18px;">
 					<div class="jc-col" style=" width: 20%;">
 						Profile Pic:
 					</div>
@@ -47,7 +37,7 @@
 				</div>
 				<div class="jc-row" style="    margin-bottom: 10px;border-bottom: 1px solid whitesmoke;" ng-repeat="student in students">
 					<div class="jc-col" style=" width: 20%;">
-						<img style="width: 30%;padding-bottom: 18px;" class="img-responsive" ng-src="{{student.profilePic}}">
+						<img style="width: 30%;padding-bottom: 18px;" class="img-responsive" src="assets/imgs/profilepic.png">
 					</div>
 					<div class="jc-col" style=" width: 20%;">
 						{{student.firstName}}
@@ -59,39 +49,101 @@
 						{{student.gradeLevel}}
 					</div>
 					<div class="jc-col" style=" width: 15%;">
-						{{student.mentor}}
+						{{student.mentorName}}
 					</div>
 					<div class="jc-col" style="width: 15%">
-						edit/delete
+						<button type="button" class="btn btn-default" ng-click="editStudent(students[$index])"  data-toggle="modal" data-target="#EditModal">
+					  Edit
+						</button>
+						<button class="btn btn-danger" ng-click="deleteStudent(students[$index], $index)">Delete</button>
+						<!-- Modal -->
+						<div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						        <h4 class="modal-title" id="myModalLabel">Edit Student</h4>
+						      </div>
+						      <div class="modal-body">
+								<div>
+									<label for="schoolDropdown">School</label>
+								    <select id="schoolDropdown" class="form-control" ng-options="school.name for school in schools" ng-model="studentToBeEdited.school"></select>
+							    </div>
+							    <div>
+							    	<label for="firstName">First Name</label>
+							    	<input type="text" class="form-control" id="firstName" ng-model="studentToBeEdited.firstName" placeholder="studentToBeEdited.firstName">
+							    </div>
+							    <div>
+							    	<label for="lastName">Last Name</label>
+							    	<input type="text" class="form-control" id="lastName" ng-model="studentToBeEdited.lastName" placeholder="studentToBeEdited.lastName">
+							    </div>
+							    <div>
+							    	<label for="gradeLevel">Grade Level</label>
+							    	<input type="text" class="form-control" id="gradeLevel" ng-model="studentToBeEdited.gradeLevel" placeholder="studentToBeEdited.gradeLevel">
+							    </div>
+							    <div>
+							    	<label for="mentorName">Mentor Name</label>
+							    	<input type="text" class="form-control" id="mentorName" ng-model="studentToBeEdited.mentorName" placeholder="studentToBeEdited.mentorName">
+							    </div>
+							    <div>
+									<label for="classes">Classes</label>
+									<div id="classes" ng-repeat="class in classes" index="$index">
+										<div ng-if="studentHasClass(class)">
+											<button class="btn btn-xs btn-success" ng-click="hasClassToggle(class, studentToBeEdited.id)">
+												{{class.name}}
+											</button>
+										</div>
+										<div ng-if="!studentHasClass(class)">
+											<button class="btn btn-xs btn-danger" ng-click="hasClassToggle(class, studentToBeEdited.id)">
+													{{class.name}}
+												</button>
+										</div>
+									</div>
+							    </div>
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						        <button type="button" class="btn btn-primary" ng-click="updateStudent()" data-dismiss="modal">Save changes</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
 					</div>
 				</div>
 			</div>
-
-
 		</div>
 	</div>
 </div>
-
-<!-- STYLE -->
-<div ng-show="featureView == 'style'">
+<!-- Add new student-->
+<div ng-show="featureView == 'addStudent'">
 	<div style="padding: 15px;">
-		<div style="background-color: white; height: 300px">
-			STYLE
+		<div style="background-color: white;">
+			<div class="feature-card" style="padding: 40px;">
+				<div class="jc-row" style="padding-bottom: 15px;border-bottom: 1px solid lightgray;margin-bottom: 18px;">
+					<div class="form-group">
+						<label for="schoolDropdown">School</label>
+					    <select id="schoolDropdown" class="form-control" ng-options="school.name for school in schools" ng-model="studentToBeAdded.school"></select>
+					    <div>
+					    	<label for="firstName">First Name</label>
+					    	<input type="text" class="form-control" id="firstName" ng-model="studentToBeAdded.firstName" placeholder="First Name">
+					    </div>
+					    <div>
+					    	<label for="lastName">Last Name</label>
+					    	<input type="text" class="form-control" id="lastName" ng-model="studentToBeAdded.lastName" placeholder="Last Name">
+					    </div>
+					    <div>
+					    	<label for="gradeLevel">Grade Level</label>
+					    	<input type="text" class="form-control" id="gradeLevel" ng-model="studentToBeAdded.gradeLevel" placeholder="Grade Level">
+					    </div>
+					    <div>
+					    	<label for="mentorName">Mentor Name</label>
+					    	<input type="text" class="form-control" id="mentorName" ng-model="studentToBeAdded.mentorName" placeholder="Mentor Name">
+					    </div>
+						<button class="btn btn-default" ng-click="addStudent()">Add +</button>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div style="background-color: white; height: 300px">
-			TESTING SIZE
-		</div>
-		<div style="background-color: white; height: 300px">
-			TESTING SIZE
-		</div>
-		<div style="background-color: white; height: 300px">
-			TESTING SIZE
-		</div>
-		<div style="background-color: white; height: 300px">
-			TESTING SIZE
-		</div>
-		<div style="background-color: white; height: 300px">
-			TESTING SIZE
-		</div>	
 	</div>
 </div>
+

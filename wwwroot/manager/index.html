@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 
 	<!-- Favicon -->
-	<link rel="apple-touch-icon" sizes="57x57" href="assets/imgs/favicon.ico/apple-icon-57x57.png">
+	<!-- <link rel="apple-touch-icon" sizes="57x57" href="assets/imgs/favicon.ico/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="assets/imgs/favicon.ico/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="assets/imgs/favicon.ico/apple-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/imgs/favicon.ico/apple-icon-76x76.png">
@@ -20,7 +20,7 @@
 	<link rel="icon" type="image/png" sizes="192x192"  href="assets/imgs/favicon.ico/android-icon-192x192.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="assets/imgs/favicon.ico/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/imgs/favicon.ico/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="assets/imgs/favicon.ico/favicon-16x16.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/imgs/favicon.ico/favicon-16x16.png"> -->
 	<link rel="manifest" href="assets/imgs/favicon.ico/manifest.json">
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
@@ -30,7 +30,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-animate.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.5.8/angular-resource.min.js"></script>
+	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-animate.min.js"></script> -->
 </head>
 <body ng-app="app">
 	<div class="super-wrapper">
@@ -58,6 +59,15 @@
 							</div>
 						</a>
 					</div>
+
+					<a href="#/schools">
+						<div class="app-section" ng-class="{'active' : tab == 'schools'}">
+							<span class="section-icon">
+								<i class="fa fa-users" aria-hidden="true"></i>
+							</span>
+							<span class="title">Schools</span>
+						</div>
+					</a>
 
 					<a href="#/students">
 						<div class="app-section" ng-class="{'active' : tab == 'students'}">
@@ -92,6 +102,14 @@
 								<i class="fa fa-book" aria-hidden="true"></i>
 							</span>
 							<span class="title">Classes</span>
+						</div>
+					</a>
+					<a href="#/tutors">
+						<div class="app-section" ng-class="{'active' : tab == 'tutors'}">
+							<span class="section-icon">
+								<i class="fa fa-book" aria-hidden="true"></i>
+							</span>
+							<span class="title">Tutors</span>
 						</div>
 					</a>
 					<hr>

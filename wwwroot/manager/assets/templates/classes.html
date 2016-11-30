@@ -4,6 +4,9 @@
 		<div ng-click="featureView = 'overview'" ng-class="{'selected' : featureView == 'overview'}" class="hvr-underline-from-center tab selected">
 			Overview
 		</div>
+		<div ng-click="featureView = 'addClass'" ng-class="{'selected' : featureView == 'addClass'}" class="hvr-underline-from-center tab selected">
+			Add Class
+		</div>
 	</div>
 </div>
 
@@ -44,31 +47,18 @@
 							</div>
 						</div>
 					</div>
-
-<!-- 
-
-static belongsTo = Student
-    static hasMany = [students:Student]
-    String name
-    String subject
-    String instructor
-    Date startDate
-    Date endDate
-
- -->
-
 					<div class="feature-card" style="padding: 40px;">
 						<div class="jc-row" style="padding-bottom: 15px;border-bottom: 1px solid lightgray;margin-bottom: 18px;">
 							<div class="jc-col" style=" width: 20%;">
 								Title:
 							</div>
-							<div class="jc-col" style=" width: 20%;">
+							<div class="jc-col" style=" width: 15%;">
 								Subject: 
 							</div>
 							<div class="jc-col" style=" width: 20%;">
 								Instructor:
 							</div>
-							<div class="jc-col" style=" width: 10%;">
+							<div class="jc-col" style=" width: 15%;">
 								Start Date:
 							</div>
 							<div class="jc-col" style=" width: 15%;">
@@ -82,51 +72,108 @@ static belongsTo = Student
 							<div class="jc-col" style=" width: 20%;">
 								{{class.name}}
 							</div>
-							<div class="jc-col" style=" width: 20%;">
+							<div class="jc-col" style=" width: 15%;">
 								{{class.subject}}
 							</div>
 							<div class="jc-col" style=" width: 20%;">
 								{{class.instructor}}
 							</div>
-							<div class="jc-col" style=" width: 10%;">
-								{{class.startDate}}
+							<div class="jc-col" style=" width: 15%;">
+								{{ class.startDate | date }}
 							</div>
 							<div class="jc-col" style=" width: 15%;">
-								{{class.endDate}}
+								{{ class.endDate | date }}
 							</div>
 							<div class="jc-col" style="width: 15%">
-								Edit
+							<button type="button" class="btn btn-default" ng-click="editClass(classes[$index])"  data-toggle="modal" data-target="#EditModal">Edit
+							</button>
+							<button class="btn btn-danger" ng-click="deleteClass(classes[$index].id, $index)">Delete</button>
+							<!-- Modal -->
+							<div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        <h4 class="modal-title" id="myModalLabel">Edit Class</h4>
+							      </div>
+							      <div class="modal-body">
+								    <div>
+								    	<label for="semester">Semester</label>
+								    	<input type="text" class="form-control" id="semester" ng-model="classToBeEdited.semester" placeholder="classToBeEdited.semester">
+								    </div>
+								    <div>
+								    	<label for="name">Class Name</label>
+								    	<input type="text" class="form-control" id="name" ng-model="classToBeEdited.name" placeholder="classToBeEdited.name">
+								    </div>
+								    <div>
+								    	<label for="subject">Subject</label>
+								    	<input type="text" class="form-control" id="subject" ng-model="classToBeEdited.subject" placeholder="classToBeEdited.subject">
+								    </div>
+								    <div>
+								    	<label for="instructor">Instructor Name</label>
+								    	<input type="text" class="form-control" id="instructor" ng-model="classToBeEdited.instructor" placeholder="classToBeEdited.instructor">
+								    </div>
+								    <div>
+								    	<label for="startDate">Start Date</label>
+								    	<input type="date" class="form-control" id="startDate" ng-model="classToBeEdited.startDate" placeholder="classToBeEdited.startDate">
+								    </div>
+								    <div>
+								    	<label for="endDate">End Date</label>
+								    	<input type="date" class="form-control" id="endDate" ng-model="classToBeEdited.endDate" placeholder="classToBeEdited.endDate">
+								    </div>
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							        <button type="button" class="btn btn-primary" ng-click="updateClass()" data-dismiss="modal">Save changes</button>
+							      </div>
+							    </div>
+							  </div>
 							</div>
+						</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
-
 		</div>
 	</div>
 </div>
-
-<!-- STYLE -->
-<div ng-show="featureView == 'style'">
+<!-- Add new student-->
+<div ng-show="featureView == 'addClass'">
 	<div style="padding: 15px;">
-		<div style="background-color: white; height: 300px">
-			STYLE
+		<div style="background-color: white;">
+			<div class="feature-card" style="padding: 40px;">
+				<div class="jc-row" style="padding-bottom: 15px;border-bottom: 1px solid lightgray;margin-bottom: 18px;">
+					<div class="form-group">
+						<label for="schoolDropdown">School</label>
+					    <select id="schoolDropdown" class="form-control" ng-options="school.name for school in schools" ng-model="classToBeAdded.school"></select>
+						<div>
+					    	<label for="semester">Semester</label>
+					    	<input type="text" class="form-control" id="semester" ng-model="classToBeAdded.semester" placeholder="Semester">
+					    </div>
+					    <div>
+					    	<label for="name">Class Name</label>
+					    	<input type="text" class="form-control" id="name" ng-model="classToBeAdded.name" placeholder="Class Name">
+					    </div>
+					    <div>
+					    	<label for="subject">Subject</label>
+					    	<input type="text" class="form-control" id="subject" ng-model="classToBeAdded.subject" placeholder="Subject">
+					    </div>
+					    <div>
+					    	<label for="instructor">Instructor Name</label>
+					    	<input type="text" class="form-control" id="instructor" ng-model="classToBeAdded.instructor" placeholder="Instructor Name">
+					    </div>
+					    <div>
+					    	<label for="startDate">Start Date</label>
+					    	<input type="date" class="form-control" id="startDate" ng-model="classToBeAdded.startDate" placeholder="Start Date">
+					    </div>
+					    <div>
+					    	<label for="endDate">End Date</label>
+					    	<input type="date" class="form-control" id="endDate" ng-model="classToBeAdded.endDate" placeholder="End Date">
+					    </div>
+					    <button class="btn btn-default" ng-click="addClass()">Add +</button>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div style="background-color: white; height: 300px">
-			TESTING SIZE
-		</div>
-		<div style="background-color: white; height: 300px">
-			TESTING SIZE
-		</div>
-		<div style="background-color: white; height: 300px">
-			TESTING SIZE
-		</div>
-		<div style="background-color: white; height: 300px">
-			TESTING SIZE
-		</div>
-		<div style="background-color: white; height: 300px">
-			TESTING SIZE
-		</div>	
 	</div>
 </div>

@@ -1,0 +1,85 @@
+<div class="module-contents-header">
+	<div>{{title}}</div>
+	<div class="features">
+		<div ng-click="featureView = 'overview'" ng-class="{'selected' : featureView == 'overview'}" class="hvr-underline-from-center tab selected">
+			Overview
+		</div>
+		<div ng-click="featureView = 'addSchool'" ng-class="{'selected' : featureView == 'addSchool'}" class="hvr-underline-from-center tab selected">
+			Add School
+		</div>
+	</div>
+</div>
+
+<!-- overview -->
+<div ng-show="featureView == 'overview'">
+	<div style="padding: 15px;">
+		<div style="background-color: white;">
+			<div class="feature-card" style="    padding: 40px;">
+				<div class="jc-row" style="    padding-bottom: 15px;border-bottom: 1px solid lightgray;margin-bottom: 18px;">
+					<div class="jc-col" style=" width: 20%;">
+						Profile Pic:
+					</div>
+					<div class="jc-col" style=" width: 20%;">
+						School Name: 
+					</div>
+					<div class="jc-col" style="width: 15%">
+						Actions:
+					</div>
+				</div>
+				<div class="jc-row" style="    margin-bottom: 10px;border-bottom: 1px solid whitesmoke;" ng-repeat="school in schools" index="$index">
+					<div class="jc-col" style=" width: 20%;">
+						<img style="width: 30%;padding-bottom: 18px;" class="img-responsive" src="assets/imgs/profilepic.png">
+					</div>
+					<div class="jc-col" style=" width: 20%;">
+						{{school.name}}
+					</div>
+					<div class="jc-col" style="width: 15%">
+					<!-- Button trigger modal -->
+					<button type="button" class="btn btn-default" ng-click="editSchool(schools[$index])"  data-toggle="modal" data-target="#EditModal">
+					  Edit
+					</button>
+
+					<!-- Modal -->
+					<div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h4 class="modal-title" id="myModalLabel">Edit School</h4>
+					      </div>
+					      <div class="modal-body">
+					        <div class="form-group">
+							    <label for="schoolName">School Name</label>
+							    <input type="text" class="form-control" id="schoolName" ng-model="SchoolToBeEdited.name" placeholder="SchoolToBeEdited.name">
+							</div>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					        <button type="button" class="btn btn-primary" ng-click="updateSchool()" data-dismiss="modal">Save changes</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+					<button class="btn btn-danger" ng-click="deleteSchool(schools[$index].id, $index)">Delete</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div ng-show="featureView == 'addSchool'">
+	<div style="padding: 15px;">
+		<div style="background-color: white;">
+			<div class="feature-card" style="    padding: 40px;">
+				<div class="jc-row" style="    padding-bottom: 15px;border-bottom: 1px solid lightgray;margin-bottom: 18px;">
+					<div class="form-group">
+					    <label for="schoolName">School Name</label>
+					    <input type="text" class="form-control" id="schoolName" ng-model="schoolToBeAdded" placeholder="Name">
+						<button class="btn btn-default" ng-click="addSchool()">Add +</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

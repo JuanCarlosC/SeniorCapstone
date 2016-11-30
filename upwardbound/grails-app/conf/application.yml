@@ -35,7 +35,7 @@ grails:
         types:
             json:
               - application/json
-              - text/json   
+              - text/json
             hal:
               - application/hal+json
               - application/hal+xml  
@@ -56,6 +56,7 @@ grails:
         defaultScope: singleton
     converters:
         encoding: UTF-8
+
 
 ---
 hibernate:

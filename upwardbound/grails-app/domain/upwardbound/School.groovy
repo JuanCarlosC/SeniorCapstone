@@ -3,8 +3,12 @@ package upwardbound
 
 import grails.rest.*
 
-//@Resource(readOnly = false, formats = ['json', 'xml'])
 class School {
-    static hasMany = [users: User, students: Student]
+    static hasMany = [users: User, students: Student, classes: Class]
     String name
+    static mapping = {
+        users fetch: 'join'
+        users lazy: false
+
+    }
 }

@@ -1,8 +1,11 @@
 'use strict';
-
+angular.module('appManager',[]);
+angular.module('services',[]);
 var app = angular.module('app', [
 	'ngRoute',
-	'appManager'
+	"ngResource",
+	'appManager',
+	'services'
 ]);
 
 app.config(['$routeProvider',
@@ -18,15 +21,25 @@ app.config(['$routeProvider',
 			}).
 			when('/students', {
 				templateUrl: 'assets/templates/students.html',
-				controller: 'appStudentsManager'
+				controller: 'appStudentsManager',
+
+			}).
+			when('/schools', {
+				templateUrl: 'assets/templates/schools.html',
+				controller: 'appSchoolsManager',
+
 			}).
 			when('/meals', {
 				templateUrl: 'assets/templates/meals.html',
-				controller: 'appMealsManager'
+				controller: 'appMealsManager',
 			}).
 			when('/classes', {
 				templateUrl: 'assets/templates/classes.html',
 				controller: 'appClassesManager'
+			}).
+			when('/tutors', {
+				templateUrl: 'assets/templates/tutors.html',
+				controller: 'appTutorsManager'
 			}).
 			otherwise({
 				redirectTo:'/'
