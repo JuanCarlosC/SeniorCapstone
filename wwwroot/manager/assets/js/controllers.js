@@ -32,7 +32,7 @@ angular.module('appManager')
 		});
 
 		$scope.addSchool = function() {
-			SchoolService.save($scope.schoolToBeAdded, function(response) {
+			SchoolsService.save({name:$scope.schoolToBeAdded}, function(response) {
 				$scope.schools.push(response);
 				$scope.featureView = "overview";
 			});
