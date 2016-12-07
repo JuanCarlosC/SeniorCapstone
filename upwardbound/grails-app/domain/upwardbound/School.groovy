@@ -9,6 +9,5 @@ class School {
     static mapping = {
         users fetch: 'join'
         users lazy: false
-
     }
 }

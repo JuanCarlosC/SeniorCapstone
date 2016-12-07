@@ -13,7 +13,6 @@
 		<div>
 			<div class="jc-row">
 				<div class="feature-card jc-col" style="width: 20%; padding: 20px 30px; min-height: 200px;">
-					<!-- <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker> -->
 					<div>
 						<h1>Date:</h1>
 					</div>
@@ -30,19 +29,22 @@
 							</div>
 							<button class="btn btn-default" ng-click="searchTutorDates()">Search Dates</button>
 						</div>
-						<div ng-if="displayedTutorDates.length > 0" class="jc-row">
+						<div class="jc-row">
 							<br>
-							<div class="form-group">
+							<div ng-if="selectedTutor.name" class="form-group">
 								<div class="form-control">
 									Create new Tutor Date 
 									<input type="date" placeholder="date" ng-model="tutorDateToBeAdded.date">
 									<button class="btn btn-xs btn-success" ng-click="addTutorDate()">Add Date</button>
 								</div>
 							</div>
-							Choose Date:
-							<div ng-repeat="tutorDate in displayedTutorDates">
-								Date: <a ng-click="searchStudents(tutorDate)">{{tutorDate.date | date}}</a> 
+							<div ng-if="displayedTutorDates.length > 0">
+								Choose Date:
+								<div ng-repeat="tutorDate in displayedTutorDates">
+									Date: <a ng-click="searchStudents(tutorDate)">{{tutorDate.date | date}}</a> 
+								</div>
 							</div>
+							
 						</div>
 					</div>
 
@@ -73,44 +75,18 @@
 								{{student.displayTutorSessions.date | date}}, attendence:  {{student.displayTutorSessions.attended}}
 							</div>
 							<div ng-if="!student.displayTutorSessions" class="jc-col" style=" width: 15%;">
-								<button class="btn btn-sm btn-success">Attended</button>
+								<button class="btn btn-sm btn-success" ng-click="addTutorSession(true, student, selectedTutorDate)">Attended</button>
 							</div>
 							<div ng-if="!student.displayTutorSessions" class="jc-col" style=" width: 15%;">
 								<!-- <div style="    margin: 15px;"  class="student-fac-button">
 									Out
 								</div> -->
-								<button class="btn btn-sm btn-danger">Absent</button>
+								<button class="btn btn-sm btn-danger" ng-click="addTutorSession(false, student, selectedTutorDate)">Absent</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
-
 		</div>
-	</div>
-</div>
-
-<!-- STYLE -->
-<div ng-show="featureView == 'style'">
-	<div style="padding: 15px;">
-		<div style="background-color: white; height: 300px">
-			STYLE
-		</div>
-		<div style="background-color: white; height: 300px">
-			TESTING SIZE
-		</div>
-		<div style="background-color: white; height: 300px">
-			TESTING SIZE
-		</div>
-		<div style="background-color: white; height: 300px">
-			TESTING SIZE
-		</div>
-		<div style="background-color: white; height: 300px">
-			TESTING SIZE
-		</div>
-		<div style="background-color: white; height: 300px">
-			TESTING SIZE
-		</div>	
 	</div>
 </div>

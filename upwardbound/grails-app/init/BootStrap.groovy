@@ -122,7 +122,7 @@ class BootStrap {
         school.addToClasses(class1)
         school.addToClasses(class2)
 
-        school.save(flush:true,failOnError:true)
+        //school.save(flush:true,failOnError:true)
     }
     def destroy = {
     }

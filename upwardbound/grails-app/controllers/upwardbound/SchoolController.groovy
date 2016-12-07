@@ -9,4 +9,8 @@ class SchoolController extends RestfulController {
     SchoolController() {
         super(School)
     }
+
+    def save(School school) {
+        school.save(flush:true,failOnError:true)
+    }
 }
