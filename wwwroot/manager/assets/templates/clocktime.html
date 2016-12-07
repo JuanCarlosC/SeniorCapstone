@@ -75,13 +75,13 @@
 								{{student.displayTutorSessions.date | date}}, attendence:  {{student.displayTutorSessions.attended}}
 							</div>
 							<div ng-if="!student.displayTutorSessions" class="jc-col" style=" width: 15%;">
-								<button class="btn btn-sm btn-success">Attended</button>
+								<button class="btn btn-sm btn-success" ng-click="addTutorSession(true, student, selectedTutorDate)">Attended</button>
 							</div>
 							<div ng-if="!student.displayTutorSessions" class="jc-col" style=" width: 15%;">
 								<!-- <div style="    margin: 15px;"  class="student-fac-button">
 									Out
 								</div> -->
-								<button class="btn btn-sm btn-danger">Absent</button>
+								<button class="btn btn-sm btn-danger" ng-click="addTutorSession(false, student, selectedTutorDate)">Absent</button>
 							</div>
 						</div>
 					</div>

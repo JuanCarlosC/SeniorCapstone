@@ -32,7 +32,7 @@ angular.module('appManager')
 		});
 
 		$scope.addSchool = function() {
-			SchoolsService.save({name:$scope.schoolToBeAdded}, function(response) {
+			SchoolsService.save({ name : $scope.schoolToBeAdded }, function(response) {
 				$scope.schools.push(response);
 				$scope.featureView = "overview";
 			});
@@ -344,6 +344,10 @@ angular.module('appManager')
 		$scope.tutorDateToBeAdded = {};
 		$scope.currentTutorSessions = [];
 
+		/*$scope.hasTutorSession = function(student){
+			console.log(student)
+			return student.displayedTutorDates;
+		};*/
 		$scope.searchTutorDates = function(){
 			$scope.displayedTutorDates =[];
 			$scope.displayedStudents = [];
@@ -409,7 +413,35 @@ angular.module('appManager')
 			tutorDateResource.save($scope.tutorDateToBeAdded, function(response) {
 				$scope.displayedTutorDates.push(response);
 			});
-		}
+		};
+
+		$scope.addTutorSession = function(attendance, student, tutorDate){
+			console.log(attendance, student, tutorDate);
+			var tutorSessionResource = $resource('http://localhost:8080/tutorsessions');
+			tutorSessionResource.save({date: new Date(), attended: attendance}, function(response) {
+				console.log(response);
+				student.tutorSessions.push({id: response.id});
+				if(!tutorDate.tutorSessions) { tutorDate.tutorSessions = [] }
+				tutorDate.tutorSessions.push({id: response.id});
+				$http({
+					method: 'PUT',
+					data: tutorDate,
+					url: 'http://localhost:8080/tutorDates/' + tutorDate.id
+				}).then(function successCallback(response) {
+					$scope.selectedTutorDate = response;
+					$http({
+						method: 'PUT',
+						data: student,
+						url: 'http://localhost:8080/students/' + student.id
+					}).then(function successCallback(response) {
+						/*for(var i = 0; i<displayedStudents; i++) {
+							if(displayedStudents[i].id == re)
+						}*/
+						$scope.searchStudents(tutorDate);
+					});
+				});
+			});
+		};
 	}])
 .controller('appMealsManager', ['$scope', '$routeParams', '$rootScope',
 	function($scope, $rootScope, $routeParams) {
